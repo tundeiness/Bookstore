@@ -14,7 +14,30 @@ class BookList extends React.Component {
     super(props);
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.getTheBooks = this.getTheBooks.bind(this);
   }
+
+  componentDidMount() {
+    this.getTheBooks();
+  }
+
+  getTheBooks() {
+    const { getDbBooks } = this.props;
+
+    const url = 'http://localhost:3001/api/v1/books';
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then(
+        response => getDbBooks(response.data),
+      )
+      .catch(error => error);
+  }
+
 
   handleRemoveBook(book) {
     const { removeBook } = this.props;
@@ -55,6 +78,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getDbBooks: cocktails => dispatch(loadCocktails(cocktails)),
   removeBook: book => dispatch(removeBook(book)),
   filterBook: filter => dispatch(filterBook(filter)),
 });
@@ -69,6 +93,7 @@ BookList.propTypes = {
   ).isRequired,
   removeBook: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
+  getDbBooks: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
 };
 

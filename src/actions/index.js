@@ -1,3 +1,9 @@
+const loadBooks = books => ({
+  type: 'LOAD_BOOK',
+  payload: books,
+});
+
+
 const createBook = book => ({
   type: 'CREATE_BOOK',
   payload: book,
@@ -19,7 +25,7 @@ const filterBook = filter => ({
 });
 
 export {
-  createBook, removeBook, filterBook, filterCategory,
+  loadBooks, createBook, removeBook, filterBook, filterCategory,
 };
 
 // GET & POST /api/v1/books
