@@ -6,6 +6,7 @@ import Book from '../component/book';
 import { removeBook, filterBook } from '../actions';
 import CategoryFilter from '../component/categoryFilter';
 import filtered from '../helper/filter';
+import Options from '../helper/options';
 
 
 class BookList extends React.Component {
