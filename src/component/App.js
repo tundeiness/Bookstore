@@ -1,12 +1,12 @@
 import React from 'react';
 import '../App.css';
 import BookList from '../container/booklist';
-import BooksForm from '../container/booksform';
+// import NewBook from '../container/newBook';
 
 const App = () => (
   <div className="App">
     <BookList />
-    <BooksForm />
+    {/* <NewBook /> */}
   </div>
 );
 

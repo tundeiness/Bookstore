@@ -3,9 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../component/book';
-import { removeBook, filterBook } from '../actions';
-import CategoryFilter from '../component/categoryFilter';
-import filtered from '../helper/filter';
+import { removeBook, loadBooks } from '../actions';
 import Options from '../helper/options';
 
 
@@ -13,7 +11,6 @@ class BookList extends React.Component {
   constructor(props) {
     super(props);
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
-    this.handleFilterChange = this.handleFilterChange.bind(this);
     this.getTheBooks = this.getTheBooks.bind(this);
   }
 
@@ -44,13 +41,14 @@ class BookList extends React.Component {
     removeBook(book);
   }
 
-  handleFilterChange(e) {
-    const { filterBook } = this.props;
-    filterBook(e.target.value);
-  }
+  // handleFilterChange(e) {
+  //   const { filterBook } = this.props;
+  //   filterBook(e.target.value);
+  // }
 
   render() {
-    const { books, filter } = this.props;
+    const { books } = this.props;
+
     return (
       <div className="main">
         <div className="border-header">
@@ -59,13 +57,17 @@ class BookList extends React.Component {
               <h1 className="main-header">Bookstore CMS</h1>
               <span>BOOKS</span>
               <div>
-                <CategoryFilter handleFilterChange={this.handleFilterChange} />
+                {/* <CategoryFilter handleFilterChange={this.handleFilterChange} /> */}
+                <Options books={books} />
               </div>
             </div>
           </div>
         </div>
         <table className="table">
-          <tbody>{filtered(books, filter).map(book => (<Book key={book.id} book={book} handleRemoveBook={() => this.handleRemoveBook(book)} />))}</tbody>
+          {/* <tbody>{filtered(books, filter).map(book => (<Book key={book.id} book={book} handleRemoveBook={() => this.handleRemoveBook(book)} />))}</tbody> */}
+          <tbody>
+            <Book books={books} />
+          </tbody>
         </table>
       </div>
     );
@@ -74,13 +76,13 @@ class BookList extends React.Component {
 
 const mapStateToProps = state => ({
   books: state.books,
-  filter: state.filter,
+  // filter: state.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getDbBooks: cocktails => dispatch(loadCocktails(cocktails)),
+  getDbBooks: books => dispatch(loadBooks(books)),
   removeBook: book => dispatch(removeBook(book)),
-  filterBook: filter => dispatch(filterBook(filter)),
+  // filterBook: filter => dispatch(filterBook(filter)),
 });
 
 BookList.propTypes = {
@@ -92,9 +94,9 @@ BookList.propTypes = {
     }).isRequired,
   ).isRequired,
   removeBook: PropTypes.func.isRequired,
-  filterBook: PropTypes.func.isRequired,
+  // filterBook: PropTypes.func.isRequired,
   getDbBooks: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
+  // filter: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookList);
