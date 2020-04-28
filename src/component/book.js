@@ -1,7 +1,11 @@
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Books from './book';
+
+// const test = books => (
+//   <tbody>{ books.map(book => (<Book key={book.id} book={book} />))}</tbody>
+
+// );
 
 const Book = ({ books, handleRemoveBook }) => {
   // const { book, handleRemoveBook } = props;
@@ -10,24 +14,7 @@ const Book = ({ books, handleRemoveBook }) => {
 
   return (
     <div className="main">
-      <div className="border-header">
-        <div className="outer-header">
-          <div className="header">
-            <h1 className="main-header">Bookstore CMS</h1>
-            <span>BOOKS</span>
-            <div>
-              {/* <CategoryFilter handleFilterChange={this.handleFilterChange} /> */}
-              {/* <Options book={book} /> */}
-            </div>
-          </div>
-        </div>
-      </div>
       <table className="table">
-        {/* <tbody>{filtered(books, filter).map(book => (<Book key={book.id} book={book} handleRemoveBook={() => this.handleRemoveBook(book)} />))}</tbody> */}
-        {/* { test } */}
-        <tbody>
-          {/* { books.map(book => (<Book key={book.id} book={book} handleRemoveBook={() => handleRemoveBook(books)} />))} */}
-        </tbody>
         <tbody>
           <tr className="book-container">
             <th className="book-category">{ books.category }</th>
@@ -36,7 +23,6 @@ const Book = ({ books, handleRemoveBook }) => {
               <button type="button" onClick={handleRemoveBook}>Remove Book</button>
             </th>
           </tr>
-          {/* <Book /> */}
         </tbody>
       </table>
     </div>

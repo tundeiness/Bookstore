@@ -3,20 +3,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../component/book';
-import { removeBook, loadBooks } from '../actions';
+import { loadBooks } from '../actions/index';
 import Options from '../helper/options';
 
 
 class BookList extends React.Component {
   constructor(props) {
     super(props);
-    this.handleRemoveBook = this.handleRemoveBook.bind(this);
+    this.state = {
+      optionState: 'All Books',
+    };
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+    // this.handleRemoveBook = this.handleRemoveBook.bind(this);
     this.getTheBooks = this.getTheBooks.bind(this);
   }
 
   componentDidMount() {
     this.getTheBooks();
   }
+
 
   getTheBooks() {
     const { getDbBooks } = this.props;
@@ -35,11 +40,17 @@ class BookList extends React.Component {
       .catch(error => error);
   }
 
-
-  handleRemoveBook(book) {
-    const { removeBook } = this.props;
-    removeBook(book);
+  handleOptionChange(event) {
+    // event.preventDefault();
+    // const { optionState } = this.state;
+    this.setState({ optionState: event.target.value });
   }
+
+
+  // handleRemoveBook(book) {
+  //   const { removeBook } = this.props;
+  //   removeBook(book);
+  // }
 
   // handleFilterChange(e) {
   //   const { filterBook } = this.props;
@@ -48,6 +59,8 @@ class BookList extends React.Component {
 
   render() {
     const { books } = this.props;
+    const { optionState } = this.state;
+    console.log('bookie =>', books);
 
     return (
       <div className="main">
@@ -56,17 +69,21 @@ class BookList extends React.Component {
             <div className="header">
               <h1 className="main-header">Bookstore CMS</h1>
               <span>BOOKS</span>
-              <div>
-                {/* <CategoryFilter handleFilterChange={this.handleFilterChange} /> */}
-                <Options books={books} />
-              </div>
+              {/* <div> */}
+              {/* <CategoryFilter handleFilterChange={this.handleFilterChange} /> */}
+              {/* <Options books={books} /> */}
+              <select value={optionState} onChange={this.handleOptionChange}>
+                <option key={books.id} value="All_Books">All Books</option>
+                {books.map(books => (<Options key={books.id} books={books} category={books.category} />))}
+              </select>
+              {/* </div> */}
             </div>
           </div>
         </div>
         <table className="table">
           {/* <tbody>{filtered(books, filter).map(book => (<Book key={book.id} book={book} handleRemoveBook={() => this.handleRemoveBook(book)} />))}</tbody> */}
           <tbody>
-            <Book books={books} />
+            {books.map(books => (<Book key={books.id} books={books} title={books.title} category={books.category} />))}
           </tbody>
         </table>
       </div>
@@ -76,24 +93,18 @@ class BookList extends React.Component {
 
 const mapStateToProps = state => ({
   books: state.books,
-  // filter: state.filter,
+
 });
 
 const mapDispatchToProps = dispatch => ({
   getDbBooks: books => dispatch(loadBooks(books)),
-  removeBook: book => dispatch(removeBook(book)),
+  // removeBook: book => dispatch(removeBook(book)),
   // filterBook: filter => dispatch(filterBook(filter)),
 });
 
 BookList.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      title: PropTypes.string,
-      category: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
-  removeBook: PropTypes.func.isRequired,
+  books: PropTypes.instanceOf(Object).isRequired,
+  // removeBook: PropTypes.func.isRequired,
   // filterBook: PropTypes.func.isRequired,
   getDbBooks: PropTypes.func.isRequired,
   // filter: PropTypes.string.isRequired,

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import App from './component/App';
-import rootReducer from './reducers/index';
+import rootReducers from './reducers/index';
 
 const BOOKS = {
   books: [
@@ -32,7 +32,9 @@ const BOOKS = {
 
 };
 
-const store = createStore(rootReducer, BOOKS, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(rootReducers, BOOKS, composeEnhancers(applyMiddleware(thunk)));
 
 
 ReactDOM.render(
