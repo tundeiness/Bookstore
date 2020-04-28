@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -60,7 +61,31 @@ class BookList extends React.Component {
   render() {
     const { books } = this.props;
     const { optionState } = this.state;
-    console.log('bookie =>', books);
+    // const filteredCategory = books.filter(book => book.category !== book);
+    // const filteredCategory = category => (
+    //   books.filter(book => book.category !== category)
+    // );
+
+    // const filteredCategory = category => (
+    //   books.filter(book => book.category.includes(!category))
+    // );
+
+
+    const categoryList = books.map(q => q.category);
+
+    const result = categoryList.filter((q, idx) => categoryList.indexOf(q) === idx);
+
+    const catList = [...new Set(books.map(item => item.category))];
+    console.log('result=>', catList);
+    console.log('result=>', result);
+
+
+    // {names.filter(name => name.includes('J')).map(filteredName => (
+    //   <li>
+    //     {filteredName}
+    //   </li>
+    // ))}
+    // console.log('bookie =>', books);
 
     return (
       <div className="main">
@@ -74,7 +99,9 @@ class BookList extends React.Component {
               {/* <Options books={books} /> */}
               <select value={optionState} onChange={this.handleOptionChange}>
                 <option key={books.id} value="All_Books">All Books</option>
+                {/* {books.map(books => (<Options key={books.id} books={books} category={books.category} />))} */}
                 {books.map(books => (<Options key={books.id} books={books} category={books.category} />))}
+                {/* {result.map((res, idx) => (<Options key={idx} books={books} category={res} />))} */}
               </select>
               {/* </div> */}
             </div>
