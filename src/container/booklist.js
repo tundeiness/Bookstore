@@ -35,7 +35,7 @@ class BookList extends React.Component {
         throw new Error('Network response was not ok.');
       })
       .then(
-        response => getDbBooks(response.data),
+        response => getDbBooks(response),
       )
       .catch(error => error);
   }
