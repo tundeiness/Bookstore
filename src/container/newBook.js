@@ -12,9 +12,17 @@ class NewBook extends React.Component {
       title: '',
       category: 'Action',
     };
+
+    this.titleRef = React.createRef();
+    this.categoryRef = React.createRef();
     this.handleBookChange = this.handleBookChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
   }
+
+  // componentDidMount() {
+  //   this.title;
+  //   this.category;
+  // }
 
   handleBookChange(e) {
     const names = e.target.name;
@@ -27,11 +35,33 @@ class NewBook extends React.Component {
     e.preventDefault();
     const { createBook } = this.props;
     const book = { ...this.state, id: Math.floor(Math.random() * 100) };
+
+
+    const bookData = {
+      id: Math.floor(Math.random() * 100),
+      title: this.titleRef.current.value,
+      category: this.categoryRef.current.value,
+    };
+
     createBook(book);
     this.setState({
       title: '',
       category: 'Action',
     });
+
+    const URL = 'http://localhost:3001/api/v1/books';
+
+    fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(bookData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => res.json())
+      .catch(error => {
+        console.log('Request failed', error);
+      });
   }
 
   render() {
@@ -40,12 +70,8 @@ class NewBook extends React.Component {
       <div className="new-book">
         <span> ADD NEW BOOK </span>
         <form className="input-group" onSubmit={this.handleBookSubmit}>
-          <input required name="title" value={title} onChange={this.handleBookChange} className="w-50" type="text" placeholder="Title" />
-          {/* <select name="category" value={category} onChange={this.handleBookChange} className="custom-select ml-3">
-            <option defaultValue>Choose...</option>
-            {Options}
-          </select> */}
-          <input name="category" value={category} onChange={this.handleBookChange} className="custom-select ml-3" />
+          <input required name="title" value={title} ref={this.titleRef} onChange={this.handleBookChange} className="w-50" type="text" placeholder="Title" />
+          <input name="category" value={category} ref={this.categoryRef} onChange={this.handleBookChange} className="custom-select ml-3" />
           <button type="submit" className="btn btn-primary ml-2">ADD BOOK</button>
         </form>
       </div>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Book from '../component/book';
 import { loadBooks } from '../actions/index';
 import Options from '../helper/options';
+// import Count from '../helper/count';
 
 
 class BookList extends React.Component {
@@ -78,6 +79,7 @@ class BookList extends React.Component {
     const catList = [...new Set(books.map(item => item.category))];
     console.log('result=>', catList);
     console.log('result=>', result);
+    // const count = books.length;
 
 
     // {names.filter(name => name.includes('J')).map(filteredName => (
@@ -86,6 +88,7 @@ class BookList extends React.Component {
     //   </li>
     // ))}
     // console.log('bookie =>', books);
+    // <Count count={count} />
 
     return (
       <div className="main">
@@ -104,6 +107,7 @@ class BookList extends React.Component {
                 {/* {result.map((res, idx) => (<Options key={idx} books={books} category={res} />))} */}
               </select>
               {/* </div> */}
+              {/* <Count books={books} /> */}
             </div>
           </div>
         </div>
