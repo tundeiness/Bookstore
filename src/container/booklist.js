@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../component/book';
-import { loadBooks } from '../actions/index';
+import { loadBooks, removeBook } from '../actions/index';
 import Options from '../helper/options';
 // import Count from '../helper/count';
 
@@ -15,9 +15,12 @@ class BookList extends React.Component {
     this.state = {
       optionState: 'All Books',
     };
+
+
     this.handleOptionChange = this.handleOptionChange.bind(this);
-    // this.handleRemoveBook = this.handleRemoveBook.bind(this);
+    this.handleRemoveBook = this.handleRemoveBook.bind(this);
     this.getTheBooks = this.getTheBooks.bind(this);
+    // this.removeTheBook = this.removeTheBook.bind(this);
   }
 
   componentDidMount() {
@@ -49,10 +52,27 @@ class BookList extends React.Component {
   }
 
 
-  // handleRemoveBook(book) {
-  //   const { removeBook } = this.props;
-  //   removeBook(book);
-  // }
+  handleRemoveBook(book) {
+    const { removeDbBook } = this.props;
+    removeDbBook(book);
+
+    const URL = `http://localhost:3001/api/v1/books/${id}`;
+
+    fetch(URL, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('This Book no longer exist in your list');
+      })
+      .then(() => { this.redirect(); })
+      .catch(error => error);
+  }
 
   // handleFilterChange(e) {
   //   const { filterBook } = this.props;
@@ -129,13 +149,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getDbBooks: books => dispatch(loadBooks(books)),
-  // removeBook: book => dispatch(removeBook(book)),
+  removeDbBook: book => dispatch(removeBook(book)),
   // filterBook: filter => dispatch(filterBook(filter)),
 });
 
 BookList.propTypes = {
   books: PropTypes.instanceOf(Object).isRequired,
-  // removeBook: PropTypes.func.isRequired,
+  removeDbBook: PropTypes.func.isRequired,
   // filterBook: PropTypes.func.isRequired,
   getDbBooks: PropTypes.func.isRequired,
   // filter: PropTypes.string.isRequired,
