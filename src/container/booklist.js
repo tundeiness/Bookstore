@@ -104,7 +104,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getDbBooks: books => dispatch(loadBooks(books)),
-  // removeBook: book => dispatch(removeBook(book)),
   filterBook: filter => dispatch(filterBook(filter)),
   removeDbBook: book => dispatch(removeBook(book)),
 });
