@@ -1,22 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Options = ({ books }) => (
+const category = ['Action', 'Classics', 'Drama', 'Fantasy', 'Sci-Fi', 'Legend'];
+const options = category.map(item => <option key={item} value={item}>{item}</option>);
 
-  <>
-    <option key={books.id}>{books.category}</option>
-  </>
-);
-
-
-Options.propTypes = {
-  books: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    category: PropTypes.string,
-    map: PropTypes.instanceOf(Function),
-  }).isRequired,
-
-};
-
-export default Options;
+export default options;

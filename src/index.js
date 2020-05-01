@@ -9,22 +9,22 @@ import rootReducers from './reducers/index';
 const BOOKS = {
   books: [
     {
-      id: 0,
+      id: 1,
       title: 'Little Women',
       category: 'Classics',
     },
     {
-      id: 1,
+      id: 2,
       title: '1984',
       category: 'Sci-Fi',
     },
     {
-      id: 2,
+      id: 3,
       title: 'The Lord of the Rings',
       category: 'Fantasy',
     },
     {
-      id: 3,
+      id: 4,
       title: 'The Odyssey',
       category: 'Legend',
     },
