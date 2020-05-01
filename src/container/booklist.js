@@ -38,9 +38,31 @@ class BookList extends React.Component {
       .catch(error => error);
   }
 
+  // handleRemoveBook(book) {
+  //   const { removeBook } = this.props;
+  //   removeBook(book);
+  // }
+
   handleRemoveBook(book) {
-    const { removeBook } = this.props;
-    removeBook(book);
+    const { removeDbBook } = this.props;
+    removeDbBook(book);
+
+    const URL = `http://localhost:3001/api/v1/books/${book.id}`;
+
+    fetch(URL, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('This Book no longer exist in your list');
+      })
+      .then(res => ({ res }))
+      .catch(error => error);
   }
 
   handleFilterChange(e) {
@@ -81,8 +103,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getDbBooks: books => dispatch(loadBooks(books)),
-  removeBook: book => dispatch(removeBook(book)),
+  // removeBook: book => dispatch(removeBook(book)),
   filterBook: filter => dispatch(filterBook(filter)),
+  removeDbBook: book => dispatch(removeBook(book)),
 });
 
 BookList.propTypes = {
@@ -93,7 +116,7 @@ BookList.propTypes = {
       category: PropTypes.string,
     }).isRequired,
   ).isRequired,
-  removeBook: PropTypes.func.isRequired,
+  removeDbBook: PropTypes.func.isRequired,
   getDbBooks: PropTypes.func.isRequired,
   filterBook: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
