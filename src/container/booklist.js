@@ -11,6 +11,7 @@ import filtered from '../helper/filter';
 class BookList extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleRemoveBook = this.handleRemoveBook.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.getTheBooks = this.getTheBooks.bind(this);
@@ -38,10 +39,10 @@ class BookList extends React.Component {
       .catch(error => error);
   }
 
-  // handleRemoveBook(book) {
-  //   const { removeBook } = this.props;
-  //   removeBook(book);
-  // }
+  forceUpdateHandler() {
+    this.forceUpdate();
+  }
+
 
   handleRemoveBook(book) {
     const { removeDbBook } = this.props;
@@ -80,7 +81,7 @@ class BookList extends React.Component {
               <h1 className="main-header">Bookstore CMS</h1>
               <span>BOOKS</span>
               <div>
-                <CategoryFilter handleFilterChange={this.handleFilterChange} />
+                <CategoryFilter category={books.category} books={books} handleFilterChange={this.handleFilterChange} />
               </div>
             </div>
           </div>

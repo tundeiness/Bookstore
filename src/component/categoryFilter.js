@@ -1,15 +1,15 @@
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import options from '../helper/options';
 
 
 const CategoryFilter = props => {
-  const { handleFilterChange } = props;
+  const { books, handleFilterChange } = props;
   return (
     <div>
       <select onChange={handleFilterChange} className="custom-select ml-3">
         <option value="All_Books">All Books</option>
-        {options}
+        {books.map(books => (<option value={books.category} key={books.id} books={books} category={books.category}>{books.category}</option>))}
       </select>
     </div>
   );
@@ -17,6 +17,12 @@ const CategoryFilter = props => {
 
 
 CategoryFilter.propTypes = {
+  books: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    category: PropTypes.string,
+    map: PropTypes.instanceOf(Function),
+  }).isRequired,
   handleFilterChange: PropTypes.func.isRequired,
 };
 
