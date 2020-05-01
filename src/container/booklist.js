@@ -65,7 +65,7 @@ class BookList extends React.Component {
         </div>
         <table className="table">
           <tbody>
-            {filtered(books, filter).map(books => (<Book key={books.id} books={books} handleRemoveBook={() => this.handleRemoveBook(books)} />))}
+            {filtered(books, filter).map(books => (<Book key={books.id} books={books} category={books.category} handleRemoveBook={() => this.handleRemoveBook(books)} />))}
             {/* {books.map(books => (<Book key={books.id} books={books} title={books.title} category={books.category} />))} */}
           </tbody>
         </table>
