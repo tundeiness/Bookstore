@@ -31,7 +31,7 @@ class BooksForm extends React.Component {
 
 
     const bookData = {
-      id: Math.floor(Math.random() * 100),
+      // id: Math.floor(Math.random() * 100),
       title: this.titleRef.current.value,
       category: this.categoryRef.current.value,
     };
