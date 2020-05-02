@@ -34,7 +34,7 @@ tbody, .outer-header {
 .header{
     display: flex;
     flex-direction: row;
-    width: 45%;
+    width: 55%;
     align-items: center;
     justify-content: space-between;
 }
@@ -113,6 +113,11 @@ form input, select {
     font-size: 16px;
     background-color: #ffffff;
 }
+
+#category{
+ margin-left: .8rem;
+}
+
 form input{
     width: 664px;
 }
@@ -121,6 +126,7 @@ form select{
 }
 form button{
     width: 184px;
+    margin-left: .8rem;
     border-radius: 3px;
     background-color: #0290ff;
     color: #ffffff;
@@ -151,7 +157,7 @@ form button{
     .input-group select{
         width: 100%;
         margin-bottom: 10px;
-    } 
+    }
     .input-group input {
         width: 100%;
         padding: 13px 0;
@@ -159,7 +165,7 @@ form button{
     }
     .input-group button {
         width: 100%;
-        padding: 15px 0; 
+        padding: 15px 0;
     }
     .main-header{
         font-size: 25px;
@@ -177,7 +183,7 @@ form button{
     .book-title{
         padding: 0 10px 0 0px;
     }
-} 
+}
 @media only screen and (min-width: 701px) and (max-width: 1200px) {
     body {
         width: 100%;
@@ -201,4 +207,4 @@ form button{
         flex-direction: row;
         width: 70%;
     }
-} 
+}

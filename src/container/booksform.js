@@ -60,9 +60,9 @@ class BooksForm extends React.Component {
     return (
       <div className="new-book">
         <span> ADD NEW BOOK </span>
-        <form className="input-group" onSubmit={this.handleBookSubmit}>
-          <input required name="title" value={title} ref={this.titleRef} onChange={this.handleBookChange} className="w-50" type="text" placeholder="Title" />
-          <input name="category" value={category} ref={this.categoryRef} onChange={this.handleBookChange} className="custom-select ml-3" />
+        <form className="input-group " onSubmit={this.handleBookSubmit}>
+          <input required name="title" value={title} ref={this.titleRef} onChange={this.handleBookChange} className="w-50 " type="text" placeholder="Title" />
+          <input name="category" value={category} ref={this.categoryRef} onChange={this.handleBookChange} className="custom-select ml-3" id="category" />
           <button type="submit" className="btn btn-primary ml-2">ADD BOOK</button>
         </form>
       </div>
