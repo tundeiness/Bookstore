@@ -81,7 +81,7 @@ class BookList extends React.Component {
               <h1 className="main-header">Bookstore CMS</h1>
               <span className="top-heading">BOOKS</span>
               <div className="select-wrapper">
-                <CategoryFilter category={books.category} books={books} handleFilterChange={this.handleFilterChange} />
+                <CategoryFilter key={books.id} category={books.category} books={books} handleFilterChange={this.handleFilterChange} />
               </div>
             </div>
           </div>

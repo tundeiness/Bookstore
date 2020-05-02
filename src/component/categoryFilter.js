@@ -17,13 +17,16 @@ const CategoryFilter = props => {
 
 
 CategoryFilter.propTypes = {
-  books: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    category: PropTypes.string,
-    map: PropTypes.instanceOf(Function),
-  }).isRequired,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      category: PropTypes.string,
+      map: PropTypes.instanceOf(Function),
+    }).isRequired,
+  ).isRequired,
   handleFilterChange: PropTypes.func.isRequired,
 };
+
 
 export default CategoryFilter;
