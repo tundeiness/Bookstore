@@ -69,7 +69,7 @@ class BookList extends React.Component {
 
   render() {
     const { books, filter } = this.props;
-    console.log(filtered(books, filter));
+
     return (
       <div className="main">
         <div className="border-header">
