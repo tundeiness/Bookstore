@@ -14,26 +14,6 @@ const removeBook = book => ({ type: REMOVE_BOOK_REQ, book });
 const filterBook = filter => ({ type: FILTER_BOOK_REQ, filter });
 
 
-// const createBook = book => ({
-//   type: 'CREATE_BOOK',
-//   payload: book,
-// });
-
-// const loadBooks = book => ({
-//   type: 'LOAD_BOOK',
-//   payload: book,
-// });
-
-// const removeBook = book => ({
-//   type: 'REMOVE_BOOK',
-//   payload: book.id,
-// });
-
-// const filterBook = filter => ({
-//   type: 'FILTER_BOOK',
-//   filter,
-// });
-
 export {
   createBook, loadBooks, removeBook, filterBook,
 };
