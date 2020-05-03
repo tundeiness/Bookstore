@@ -17,6 +17,7 @@ class BooksForm extends React.Component {
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
   }
 
+
   handleBookChange(e) {
     const names = e.target.name;
     this.setState({
@@ -24,30 +25,36 @@ class BooksForm extends React.Component {
     });
   }
 
-  handleBookSubmit(e) {
-    e.preventDefault();
+  handleBookSubmit() {
     const { createBook } = this.props;
-    const book = { ...this.state, id: Math.floor(Math.random() * 100) };
-
+    const { size } = this.props;
+    const newId = size + 1;
 
     const bookData = {
-      // id: Math.floor(Math.random() * 100),
+      id: newId,
       title: this.titleRef.current.value,
       category: this.categoryRef.current.value,
     };
 
-    createBook(book);
+
+    createBook(bookData);
     this.setState({
       title: '',
       category: 'Action',
     });
 
+
     const URL = 'http://localhost:3001/api/v1/books';
 
     fetch(URL, {
       method: 'POST',
-      body: JSON.stringify(bookData),
+      body: JSON.stringify({
+        id: newId,
+        title: this.titleRef.current.value,
+        category: this.categoryRef.current.value,
+      }),
       headers: {
+
         'Content-Type': 'application/json',
       },
     })
@@ -57,6 +64,7 @@ class BooksForm extends React.Component {
 
   render() {
     const { title, category } = this.state;
+
     return (
       <div className="new-book">
         <span> ADD NEW BOOK </span>
@@ -69,12 +77,19 @@ class BooksForm extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  size: state.books.length,
+});
+
+
 const mapDispatchToProps = dispatch => ({
   createBook: book => dispatch(createBook(book)),
 });
 
 BooksForm.propTypes = {
   createBook: PropTypes.instanceOf(Function).isRequired,
+  size: PropTypes.number.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(BooksForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);

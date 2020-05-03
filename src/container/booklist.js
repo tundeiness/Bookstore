@@ -39,10 +39,6 @@ class BookList extends React.Component {
       .catch(error => error);
   }
 
-  forceUpdateHandler() {
-    this.forceUpdate();
-  }
-
 
   handleRemoveBook(book) {
     const { removeDbBook } = this.props;
@@ -73,6 +69,7 @@ class BookList extends React.Component {
 
   render() {
     const { books, filter } = this.props;
+    console.log(filtered(books, filter));
     return (
       <div className="main">
         <div className="border-header">
