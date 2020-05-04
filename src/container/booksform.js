@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { createBook } from '../actions/index';
 
 
@@ -58,8 +59,15 @@ class BooksForm extends React.Component {
         'Content-Type': 'application/json',
       },
     })
-      .then(res => res.json())
-      .catch(error => error.error);
+      .then(response => {
+        if (response.ok) {
+          toast.success('Book Added');
+          return response.json();
+        }
+        throw new Error(toast.error('This Book either exist in store or it was not created'));
+      })
+      .then(res => ({ res }))
+      .catch(error => error);
   }
 
   render() {
@@ -73,6 +81,7 @@ class BooksForm extends React.Component {
           <input name="category" value={category} ref={this.categoryRef} onChange={this.handleBookChange} className="custom-select ml-3" id="category" />
           <button type="submit" className="btn btn-primary ml-2">ADD BOOK</button>
         </form>
+        <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
       </div>
     );
   }

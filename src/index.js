@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import App from './component/App';
 import rootReducers from './reducers/index';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BOOKS = {
   books: [

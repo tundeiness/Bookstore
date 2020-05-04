@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import Book from '../component/book';
 import { loadBooks, removeBook, filterBook } from '../actions/index';
 import CategoryFilter from '../component/categoryFilter';
@@ -54,9 +55,10 @@ class BookList extends React.Component {
     })
       .then(response => {
         if (response.ok) {
+          toast.success('Book successfully removed');
           return response.json();
         }
-        throw new Error('This Book no longer exist in your list');
+        throw new Error(toast.error('This Book no longer exist in your store'));
       })
       .then(res => ({ res }))
       .catch(error => error);
@@ -88,6 +90,7 @@ class BookList extends React.Component {
             {filtered(books, filter).map(books => (<Book key={books.id} books={books} category={books.category} handleRemoveBook={() => this.handleRemoveBook(books)} />))}
           </tbody>
         </table>
+        <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
       </div>
     );
   }
