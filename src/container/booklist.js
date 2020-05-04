@@ -43,7 +43,7 @@ class BookList extends React.Component {
 
   handleRemoveBook(book) {
     const { removeDbBook } = this.props;
-    removeDbBook(book);
+    removeDbBook(book.id);
 
     const URL = `http://localhost:3001/api/v1/books/${book.id}`;
 
@@ -71,6 +71,7 @@ class BookList extends React.Component {
 
   render() {
     const { books, filter } = this.props;
+
 
     return (
       <div className="main">

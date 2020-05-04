@@ -10,8 +10,8 @@ const bookReducer = (state = '', action) => {
     case LOAD_ALL_BOOK_REQ:
       return action.books;
     case REMOVE_BOOK_REQ:
-      return state.filter(book => book.id !== action.payload);
-
+      // return state.filter(book => book.id !== action.payload);
+      return state.filter(book => book.id !== action.id);
     default:
       return state;
   }
