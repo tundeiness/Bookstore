@@ -3,13 +3,24 @@
 
 <p align="center">This is a bookstore app built with React & Redux.</p><br />
 
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Live Demo](#live-demo)
+- [Getting Started](#getting-started)
+- [Authors](#authors)
+- [Contributing](#contributing)
+- [Show Your Support](#show-your-support)
+- [License](#license)
+- [Future Improvements](#future-improvements)
+
 ![Bookstore Desktop version](https://user-images.githubusercontent.com/25479050/73641302-1ae94c80-4670-11ea-8933-ab6e6df2bcbc.gif)
 
-With the Bookstore the following functions can be achieved:
+## About The Project
 
-- Add book,
-- Remove book, and
-- Filter books based on categories
+The Bookstore app, has the following functions: Adding books, Removing books, and Filtering books based on categories
 
 ## Built With
 
@@ -81,3 +92,7 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](./LICENSE) licensed.
+
+## Future Improvements
+
+* [x] A Ruby on Rails RESTful API back-end 
