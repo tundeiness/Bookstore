@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const CategoryFilter = props => {
   const { books, handleFilterChange } = props;
   return (
@@ -15,7 +14,6 @@ const CategoryFilter = props => {
   );
 };
 
-
 CategoryFilter.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
@@ -27,6 +25,5 @@ CategoryFilter.propTypes = {
   ).isRequired,
   handleFilterChange: PropTypes.func.isRequired,
 };
-
 
 export default CategoryFilter;
