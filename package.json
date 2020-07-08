@@ -47,5 +47,8 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "redux-devtools-extension": "^2.13.8"
   },
-  "proxy": "https://rails-bookstore-backend.herokuapp.com"
+  "proxy": {
+    "/api": {
+      "target": "https://rails-bookstore-backend.herokuapp.com"
+    }
 }
