@@ -41,7 +41,7 @@ class BooksForm extends React.Component {
       category: 'Action',
     });
 
-    const URL = '/api/v1/books';
+    const URL = 'https://rails-bookstore-backend.herokuapp.com/api/v1/books';
 
     fetch(URL, {
       method: 'POST',
