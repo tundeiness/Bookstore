@@ -23,7 +23,7 @@ class BookList extends React.Component {
 
   getTheBooks() {
     const { getDbBooks } = this.props;
-    const URL = 'https://rails-bookstore-backend.herokuapp.com/api/v1/books';
+    const URL = '/api/v1/books';
 
     fetch(URL)
       .then(response => {
@@ -42,7 +42,7 @@ class BookList extends React.Component {
     const { removeDbBook } = this.props;
     removeDbBook(book.id);
 
-    const URL = `https://rails-bookstore-backend.herokuapp.com/api/v1/books/${book.id}`;
+    const URL = `/api/v1/books/${book.id}`;
 
     fetch(URL, {
       method: 'DELETE',
