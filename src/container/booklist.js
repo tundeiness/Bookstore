@@ -8,7 +8,6 @@ import { loadBooks, removeBook, filterBook } from '../actions/index';
 import CategoryFilter from '../component/categoryFilter';
 import filtered from '../helper/filter';
 
-
 class BookList extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,6 @@ class BookList extends React.Component {
   componentDidMount() {
     this.getTheBooks();
   }
-
 
   getTheBooks() {
     const { getDbBooks } = this.props;
@@ -40,12 +38,11 @@ class BookList extends React.Component {
       .catch(error => error);
   }
 
-
   handleRemoveBook(book) {
     const { removeDbBook } = this.props;
     removeDbBook(book.id);
 
-    const URL = `http://localhost:3001/api/v1/books/${book.id}`;
+    const URL = `https://rails-bookstore-backend.herokuapp.com/api/v1/books/${book.id}`;
 
     fetch(URL, {
       method: 'DELETE',
@@ -71,7 +68,6 @@ class BookList extends React.Component {
 
   render() {
     const { books, filter } = this.props;
-
 
     return (
       <div className="main">
