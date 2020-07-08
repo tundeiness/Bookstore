@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { createBook } from '../actions/index';
 
-
 class BooksForm extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +16,6 @@ class BooksForm extends React.Component {
     this.handleBookChange = this.handleBookChange.bind(this);
     this.handleBookSubmit = this.handleBookSubmit.bind(this);
   }
-
 
   handleBookChange(e) {
     const names = e.target.name;
@@ -37,15 +35,13 @@ class BooksForm extends React.Component {
       category: this.categoryRef.current.value,
     };
 
-
     createBook(bookData);
     this.setState({
       title: '',
       category: 'Action',
     });
 
-
-    const URL = 'http://localhost:3001/api/v1/books';
+    const URL = 'https://rails-bookstore-backend.herokuapp.com/api/v1/books';
 
     fetch(URL, {
       method: 'POST',
@@ -90,7 +86,6 @@ class BooksForm extends React.Component {
 const mapStateToProps = state => ({
   size: state.books.length,
 });
-
 
 const mapDispatchToProps = dispatch => ({
   createBook: book => dispatch(createBook(book)),
