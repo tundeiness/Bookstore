@@ -23,7 +23,7 @@ class BookList extends React.Component {
 
   getTheBooks() {
     const { getDbBooks } = this.props;
-    const URL = 'http://localhost:3001/api/v1/books';
+    const URL = 'https://rails-bookstore-backend.herokuapp.com/api/v1/books';
 
     fetch(URL)
       .then(response => {
