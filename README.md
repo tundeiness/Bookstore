@@ -26,7 +26,7 @@ requested to build both the front-end and the back-end of an application that
 will help Magic-books organize and manage their bookstore. The application is required to be fast,
 dynamic and responsive to their actions. As a result, my partner and I decided to settle with
 building it with React & Redux at the frontend. The Back-end
-repository of the project can be found [here](https://github.com/tundeiness/Bookstore).
+repository of the project can be found [here](https://github.com/tundeiness/Bookstore-api/tree/configuration).
 
 ## Features
 
@@ -91,7 +91,7 @@ $ npm run start
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/pelzolga123/Bookstore/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/tundeiness/Bookstore/issues).
 
 1. Fork it (https://github.com/tundeiness/Bookstore/fork)
 2. Create your working branch (git checkout -b [choose-a-name])
