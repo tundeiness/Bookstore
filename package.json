@@ -16,7 +16,7 @@
     "redux-thunk": "^2.3.0",
     "use-force-update": "^1.0.7"
   },
-  "proxy": "https://rails-bookstore-backend.herokuapp.com",
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
