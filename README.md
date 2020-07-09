@@ -96,4 +96,4 @@ This project is [MIT](./LICENSE) licensed.
 
 ## Future Improvements
 
-* [x] A Ruby on Rails RESTful API [back-end](https://github.com/tundeiness/Bookstore/fork)
+* [x] A Ruby on Rails RESTful API [back-end](https://github.com/tundeiness/Bookstore-api/tree/configuration)
