@@ -72,6 +72,7 @@ $ npm run start
 👤 **Tunde Oretade**
    - Github: [@tundeiness](https://github.com/tundeiness)
    - LinkedIn: [Tunde Oretade](https://www.linkedin.com/in/tundeoretade/)
+   - Email - [tundeiness@yahoo.co.uk](tundeines@yahoo.co.uk)
 
 
 
@@ -95,4 +96,4 @@ This project is [MIT](./LICENSE) licensed.
 
 ## Future Improvements
 
-* [x] A Ruby on Rails RESTful API back-end 
+* [x] A Ruby on Rails RESTful API [back-end](https://github.com/tundeiness/Bookstore/fork)
