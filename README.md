@@ -7,6 +7,7 @@
 
 - [Table of Contents](#table-of-contents)
 - [About The Project](#about-the-project)
+- [Features](#features)
 - [Built With](#built-with)
 - [Live Demo](#live-demo)
 - [Getting Started](#getting-started)
@@ -19,14 +20,26 @@
 ![Bookstore Desktop version](https://user-images.githubusercontent.com/25479050/73641302-1ae94c80-4670-11ea-8933-ab6e6df2bcbc.gif)
 
 ## About The Project
+This is the Frontend implementation of the bookstore project commissioned by Magic-books
+Inc (Magic-books is based in Germany). I and my partner at Microverse has been
+requested to build both the front-end and the back-end of an application that
+will help Magic-books organize and manage their bookstore. The application is required to be fast,
+dynamic and responsive to their actions. As a result, my partner and I decided to settle with
+building it with React & Redux at the frontend. The Back-end
+repository of the project can be found [here](https://github.com/tundeiness/Bookstore).
 
-The Bookstore app, has the following functions: Adding books, Removing books, and Filtering books based on categories
+## Features
+
+The Magic-Books Bookstore app, has the following features: 
+- Users can add books, 
+- Users can remove books, and 
+- Users can Filter books based on categories
 
 ## Built With
 
 * React
 * Redux
-* React Create App
+* Bootstrap
 * JavaScript (ES6)
 * CSS 3
 
