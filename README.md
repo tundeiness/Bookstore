@@ -21,7 +21,7 @@ With the Bookstore the following functions can be achieved:
 
 ## Live Demo
 
-Here is a link to the [demo page](https://react-2020-bookstore.herokuapp.com/)
+Here is a link to the [demo page](https://magic-books.netlify.app)
 
 ## Getting Started
 
@@ -61,6 +61,7 @@ $ npm run start
 👤 **Tunde Oretade**
    - Github: [@tundeiness](https://github.com/tundeiness)
    - LinkedIn: [Tunde Oretade](https://www.linkedin.com/in/tundeoretade/)
+   - Email:  tundeiness@yahoo.co.uk
 
 
 
